@@ -42,14 +42,7 @@ public class Main {
 		Banco banco = new Banco();
 		banco.setNome("Itaú");
 		banco.setContas(contas);
-
-		//Listas clientes do banco a partir de seu código
-		Set<String> codigosUnicos = banco.getContas().stream()
-				.map(conta -> "Nome: " + conta.getCliente().getNome() +
-						" - Código: " + conta.getCliente().getCodigo())
-				.collect(Collectors.toSet());
-
-		codigosUnicos.forEach(System.out::println);
+		banco.listarClientes();
 
 		correnteJose.imprimirExtrato();
 		correnteAna.imprimirExtrato();

@@ -4,6 +4,8 @@ import model.Cliente;
 import model.Conta;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Banco {
 
@@ -24,6 +26,16 @@ public class Banco {
 
 	public void setContas(List<Conta> contas) {
 		this.contas = contas;
+	}
+
+	public void listarClientes() {
+		//Listas clientes do banco a partir de seu código
+		Set<String> codigosUnicos = getContas().stream()
+				.map(conta -> "Nome: " + conta.getCliente().getNome() +
+						" - Código: " + conta.getCliente().getCodigo())
+				.collect(Collectors.toSet());
+
+		codigosUnicos.forEach(System.out::println);
 	}
 
 }
